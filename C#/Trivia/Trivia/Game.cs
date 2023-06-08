@@ -147,36 +147,29 @@ namespace Trivia
             {
                 if (_isGettingOutOfPenaltyBox)
                 {
-                    Console.WriteLine("Answer was correct!!!!");
-                    _purses[_currentPlayer]++;
-                    Console.WriteLine(_players[_currentPlayer]
-                            + " now has "
-                            + _purses[_currentPlayer]
-                            + " Gold Coins.");
-
-                    var winner = DidPlayerWin();
-                    NextPlayer();
-
-                    return winner;
+                    return PlayerAnswersCorrectly();
                 }
 
                 NextPlayer();
                 return true;
             }
 
-            {
-                Console.WriteLine("Answer was corrent!!!!");
-                _purses[_currentPlayer]++;
-                Console.WriteLine(_players[_currentPlayer]
-                                  + " now has "
-                                  + _purses[_currentPlayer]
-                                  + " Gold Coins.");
+            return PlayerAnswersCorrectly();
+        }
 
-                var winner = DidPlayerWin();
-                NextPlayer();
+        private bool PlayerAnswersCorrectly()
+        {
+            Console.WriteLine("Answer was correct!!!!");
+            _purses[_currentPlayer]++;
+            Console.WriteLine(_players[_currentPlayer]
+                              + " now has "
+                              + _purses[_currentPlayer]
+                              + " Gold Coins.");
 
-                return winner;
-            }
+            var winner = DidPlayerWin();
+            NextPlayer();
+
+            return winner;
         }
 
         private void NextPlayer()
