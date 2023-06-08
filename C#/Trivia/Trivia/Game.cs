@@ -143,18 +143,10 @@ namespace Trivia
 
         public bool WasCorrectlyAnswered()
         {
-            if (_inPenaltyBox[_currentPlayer])
-            {
-                if (_isGettingOutOfPenaltyBox)
-                {
-                    return PlayerAnswersCorrectly();
-                }
-
-                NextPlayer();
-                return true;
-            }
-
-            return PlayerAnswersCorrectly();
+            if (!_inPenaltyBox[_currentPlayer]) return PlayerAnswersCorrectly();
+            if (_isGettingOutOfPenaltyBox) return PlayerAnswersCorrectly();
+            NextPlayer();
+            return true;
         }
 
         private bool PlayerAnswersCorrectly()
