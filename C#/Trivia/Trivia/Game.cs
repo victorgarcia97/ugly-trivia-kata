@@ -155,14 +155,12 @@ namespace Trivia
                             + " Gold Coins.");
 
                     var winner = DidPlayerWin();
-                    _currentPlayer++;
-                    if (_currentPlayer == _players.Count) _currentPlayer = 0;
+                    NextPlayer();
 
                     return winner;
                 }
 
-                _currentPlayer++;
-                if (_currentPlayer == _players.Count) _currentPlayer = 0;
+                NextPlayer();
                 return true;
             }
 
@@ -175,11 +173,16 @@ namespace Trivia
                                   + " Gold Coins.");
 
                 var winner = DidPlayerWin();
-                _currentPlayer++;
-                if (_currentPlayer == _players.Count) _currentPlayer = 0;
+                NextPlayer();
 
                 return winner;
             }
+        }
+
+        private void NextPlayer()
+        {
+            _currentPlayer++;
+            if (_currentPlayer == _players.Count) _currentPlayer = 0;
         }
 
         public bool WrongAnswer()
